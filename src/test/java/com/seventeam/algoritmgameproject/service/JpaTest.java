@@ -1,10 +1,10 @@
 //package com.seventeam.algoritmgameproject.service;
 //
 //import com.seventeam.algoritmgameproject.domain.QuestionLevel;
-//import com.seventeam.algoritmgameproject.domain.model.Question;
-//import com.seventeam.algoritmgameproject.domain.model.TestCase;
+//import com.seventeam.algoritmgameproject.domain.model.questions.Question;
+//import com.seventeam.algoritmgameproject.domain.model.questions.TestCase;
 //import com.seventeam.algoritmgameproject.domain.repository.QuestionDslRepository;
-//import com.seventeam.algoritmgameproject.web.socketServer.model.GameRoom;
+//import com.seventeam.algoritmgameproject.domain.model.game.GameRoom;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.DisplayName;
 //import org.junit.jupiter.api.Test;

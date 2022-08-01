@@ -1,12 +1,14 @@
 package com.seventeam.algoritmgameproject.config;
 
 
-import com.seventeam.algoritmgameproject.web.socketServer.pubsub.RedisSubscriber;
+import com.seventeam.algoritmgameproject.web.service.game_service.RedisSubscriber;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
@@ -18,10 +20,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @RequiredArgsConstructor
 @Configuration
+@PropertySource(value = "file:/home/ubuntu/config/application.yml")
 public class RedisConfig {
 
-    private final RedisProperties redisProperties;
-
+    @Value("${spring.redis.password}")
+    private String redisPwd;
 
     @Bean
     public ChannelTopic channelTopic() {
@@ -31,7 +34,9 @@ public class RedisConfig {
     // lettuce
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory(redisProperties.getHost(), redisProperties.getPort());
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
+        redisStandaloneConfiguration.setPassword(redisPwd);
+        return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }
     /**
      * redis에 발행(publish)된 메시지 처리를 위한 리스너 설정

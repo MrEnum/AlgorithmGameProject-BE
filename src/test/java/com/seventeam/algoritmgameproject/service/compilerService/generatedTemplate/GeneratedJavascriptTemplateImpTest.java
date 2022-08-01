@@ -1,7 +1,7 @@
 package com.seventeam.algoritmgameproject.service.compilerService.generatedTemplate;
 
-import com.seventeam.algoritmgameproject.domain.model.TestCase;
-import com.seventeam.algoritmgameproject.domain.repository.TestCaseDslRepository;
+import com.seventeam.algoritmgameproject.domain.model.questions.TestCase;
+import com.seventeam.algoritmgameproject.web.repository.questions_repository.TestCaseDslRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
 package com.seventeam.algoritmgameproject.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.seventeam.algoritmgameproject.security.Jwt.JwtExceptionFilter;
-import com.seventeam.algoritmgameproject.security.Jwt.JwtFilter;
-import com.seventeam.algoritmgameproject.security.Jwt.JwtTokenProvider;
+import com.seventeam.algoritmgameproject.security.JwtExceptionFilter;
+import com.seventeam.algoritmgameproject.security.JwtFilter;
+import com.seventeam.algoritmgameproject.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
@@ -77,7 +77,10 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.addAllowedOrigin("http://localhost:3000");
+        configuration.addAllowedOrigin("https://localhost:3000");
         configuration.addAllowedOrigin("http://localhost:8080");
+        configuration.addAllowedOrigin("https://chinda.live");
+        configuration.addAllowedOrigin("https://www.chinda.live");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.addExposedHeader("Authorization");

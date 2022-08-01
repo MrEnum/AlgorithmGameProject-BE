@@ -186,7 +186,7 @@ public class ProgrammersTest {
         driver = new ChromeDriver(options);
         List<String> questions = new ArrayList<>();
         try {
-            String[] languages = {"java", "javascript", "python3"}; //가져올 언어
+            String[] languages = {"java"}; //가져올 언어
             for (String language : languages) {
 
                 //문제 url
@@ -200,8 +200,9 @@ public class ProgrammersTest {
                 for (WebElement solution : solutions) {
                     String eachLine = solution.findElement(By.tagName("span")).getText();
                     buffer.append(eachLine);
-
                 }
+                int i = buffer.indexOf("{")+1;
+                buffer.insert(i, "\n");
                 questions.add(buffer.toString());
             }
         } finally {
@@ -354,7 +355,7 @@ public class ProgrammersTest {
     public Question uploadQuestion(String questionUrl, QuestionLevel level) {
         //given
         boolean isGetQuestions = true;
-        com.seventeam.algoritmgameproject.domain.model.Question question = null;
+        com.seventeam.algoritmgameproject.domain.model.questions.Question question = null;
         //문제 제목
         String title = null;
         //문제 설명
